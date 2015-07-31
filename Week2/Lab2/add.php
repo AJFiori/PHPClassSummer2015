@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Actor Database</title>
     </head>
     <body>
         <?php
@@ -22,9 +22,7 @@
              * empty()
              * isset()
              */
-            if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-                $results = 'Data Added';
-            }
+           
         }
         ?>
 

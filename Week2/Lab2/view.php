@@ -6,8 +6,7 @@
         <title>Actor Database</title>
     </head>
     <body>
-    
-        <?php
+      <?php
         include './dbconnect.php';
         include './functions.php';
         $results = '';
@@ -27,17 +26,19 @@
             );
             if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
                 $results = 'Data Added';
+            } else {
+                
             }
         }
         
         ?>
+      
     
 
 <center>
     <div id=wrapper>
             <h1>Actor Database</h1>
     </div>
-    
             <form method="post" action="#">
                 First Name:  <input type="text" value="" name="firstName" autofocus="autofocus"/>
                 <br/>
@@ -52,13 +53,13 @@
                 <br/>
                 <br/>
                 <input type="submit" value="Submit"/>
-                <input type="button" value="View Data"/>
-                <input type="button" value="Search"/>
-                <p><?php echo $results ?></p>
+                <input type="button" value="View Data" onClick="location.href='Data.php'"/>                          
+               <!-- <input type="button" value="Search"/> -->
+                 
             </form>
         
 
 </center>
-
+    
 </body>
 </html>

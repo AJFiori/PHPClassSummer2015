@@ -18,14 +18,14 @@
                 ":dataone" => $dataone,
                 ":datatwo" => $datatwo
             );
-            /*
-             * empty()
-             * isset()
-             */
-           
-        }
+            if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+                $results = 'Data Added';
+            }
+          
+           }
+        
         ?>
-
+        
 
         <h1><?php echo $results; ?></h1>
 
@@ -38,6 +38,7 @@
             <br />
 
             <input type="submit" value="Submit" />
+            <input type="View Data" value="View Data" />
         </form>
     </body>
 </html>

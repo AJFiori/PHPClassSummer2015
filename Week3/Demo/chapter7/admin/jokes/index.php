@@ -1,7 +1,5 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] .
-    '/includes/magicquotes.inc.php';
-
+include_once('../../includes/magicquotes.inc.php');
 if (isset($_GET['add']))
 {
   $pageTitle = 'New Joke';
@@ -10,9 +8,7 @@ if (isset($_GET['add']))
   $authorid = '';
   $id = '';
   $button = 'Add joke';
-
-  include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-
+  include('../../includes/db.inc.php');
   // Build the list of authors
   try
   {
@@ -24,12 +20,10 @@ if (isset($_GET['add']))
     include 'error.html.php';
     exit();
   }
-
   foreach ($result as $row)
   {
     $authors[] = array('id' => $row['id'], 'name' => $row['name']);
   }
-
   // Build the list of categories
   try
   {
@@ -41,7 +35,6 @@ if (isset($_GET['add']))
     include 'error.html.php';
     exit();
   }
-
   foreach ($result as $row)
   {
     $categories[] = array(
@@ -49,15 +42,12 @@ if (isset($_GET['add']))
         'name' => $row['name'],
         'selected' => FALSE);
   }
-
   include 'form.html.php';
   exit();
 }
-
 if (isset($_GET['addform']))
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-
+  include('../../includes/db.inc.php');
   if ($_POST['author'] == '')
   {
     $error = 'You must choose an author for this joke.
@@ -65,7 +55,6 @@ if (isset($_GET['addform']))
     include 'error.html.php';
     exit();
   }
-
   try
   {
     $sql = 'INSERT INTO joke SET
@@ -83,9 +72,7 @@ if (isset($_GET['addform']))
     include 'error.html.php';
     exit();
   }
-
   $jokeid = $pdo->lastInsertId();
-
   if (isset($_POST['categories']))
   {
     try
@@ -94,7 +81,6 @@ if (isset($_GET['addform']))
           jokeid = :jokeid,
           categoryid = :categoryid';
       $s = $pdo->prepare($sql);
-
       foreach ($_POST['categories'] as $categoryid)
       {
         $s->bindValue(':jokeid', $jokeid);
@@ -109,15 +95,12 @@ if (isset($_GET['addform']))
       exit();
     }
   }
-
   header('Location: .');
   exit();
 }
-
 if (isset($_POST['action']) and $_POST['action'] == 'Edit')
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-
+  include('../../includes/db.inc.php');
   try
   {
     $sql = 'SELECT id, joketext, authorid FROM joke WHERE id = :id';
@@ -132,14 +115,12 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
     exit();
   }
   $row = $s->fetch();
-
   $pageTitle = 'Edit Joke';
   $action = 'editform';
   $text = $row['joketext'];
   $authorid = $row['authorid'];
   $id = $row['id'];
   $button = 'Update joke';
-
   // Build the list of authors
   try
   {
@@ -151,12 +132,10 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
     include 'error.html.php';
     exit();
   }
-
   foreach ($result as $row)
   {
     $authors[] = array('id' => $row['id'], 'name' => $row['name']);
   }
-
   // Get list of categories containing this joke
   try
   {
@@ -171,12 +150,10 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
     include 'error.html.php';
     exit();
   }
-
   foreach ($s as $row)
   {
     $selectedCategories[] = $row['categoryid'];
   }
-
   // Build the list of all categories
   try
   {
@@ -188,7 +165,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
     include 'error.html.php';
     exit();
   }
-
   foreach ($result as $row)
   {
     $categories[] = array(
@@ -196,15 +172,12 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
         'name' => $row['name'],
         'selected' => in_array($row['id'], $selectedCategories));
   }
-
   include 'form.html.php';
   exit();
 }
-
 if (isset($_GET['editform']))
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-
+  include('../../includes/db.inc.php');
   if ($_POST['author'] == '')
   {
     $error = 'You must choose an author for this joke.
@@ -212,7 +185,6 @@ if (isset($_GET['editform']))
     include 'error.html.php';
     exit();
   }
-
   try
   {
     $sql = 'UPDATE joke SET
@@ -231,7 +203,6 @@ if (isset($_GET['editform']))
     include 'error.html.php';
     exit();
   }
-
   try
   {
     $sql = 'DELETE FROM jokecategory WHERE jokeid = :id';
@@ -245,7 +216,6 @@ if (isset($_GET['editform']))
     include 'error.html.php';
     exit();
   }
-
   if (isset($_POST['categories']))
   {
     try
@@ -254,7 +224,6 @@ if (isset($_GET['editform']))
           jokeid = :jokeid,
           categoryid = :categoryid';
       $s = $pdo->prepare($sql);
-
       foreach ($_POST['categories'] as $categoryid)
       {
         $s->bindValue(':jokeid', $_POST['id']);
@@ -269,15 +238,12 @@ if (isset($_GET['editform']))
       exit();
     }
   }
-
   header('Location: .');
   exit();
 }
-
 if (isset($_POST['action']) and $_POST['action'] == 'Delete')
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-
+  include('../../includes/db.inc.php');
   // Delete category assignments for this joke
   try
   {
@@ -292,7 +258,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'Delete')
     include 'error.html.php';
     exit();
   }
-
   // Delete the joke
   try
   {
@@ -307,41 +272,33 @@ if (isset($_POST['action']) and $_POST['action'] == 'Delete')
     include 'error.html.php';
     exit();
   }
-
   header('Location: .');
   exit();
 }
-
 if (isset($_GET['action']) and $_GET['action'] == 'search')
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-
+  include('../../includes/db.inc.php');
   // The basic SELECT statement
   $select = 'SELECT id, joketext';
   $from   = ' FROM joke';
   $where  = ' WHERE TRUE';
-
   $placeholders = array();
-
   if ($_GET['author'] != '') // An author is selected
   {
     $where .= " AND authorid = :authorid";
     $placeholders[':authorid'] = $_GET['author'];
   }
-
   if ($_GET['category'] != '') // A category is selected
   {
     $from  .= ' INNER JOIN jokecategory ON id = jokeid';
     $where .= " AND categoryid = :categoryid";
     $placeholders[':categoryid'] = $_GET['category'];
   }
-
   if ($_GET['text'] != '') // Some search text was specified
   {
     $where .= " AND joketext LIKE :joketext";
     $placeholders[':joketext'] = '%' . $_GET['text'] . '%';
   }
-
   try
   {
     $sql = $select . $from . $where;
@@ -354,19 +311,15 @@ if (isset($_GET['action']) and $_GET['action'] == 'search')
     include 'error.html.php';
     exit();
   }
-
   foreach ($s as $row)
   {
     $jokes[] = array('id' => $row['id'], 'text' => $row['joketext']);
   }
-
   include 'jokes.html.php';
   exit();
 }
-
 // Display search form
-include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-
+include('../../includes/db.inc.php');
 try
 {
   $result = $pdo->query('SELECT id, name FROM author');
@@ -377,12 +330,10 @@ catch (PDOException $e)
   include 'error.html.php';
   exit();
 }
-
 foreach ($result as $row)
 {
   $authors[] = array('id' => $row['id'], 'name' => $row['name']);
 }
-
 try
 {
   $result = $pdo->query('SELECT id, name FROM category');
@@ -393,10 +344,8 @@ catch (PDOException $e)
   include 'error.html.php';
   exit();
 }
-
 foreach ($result as $row)
 {
   $categories[] = array('id' => $row['id'], 'name' => $row['name']);
 }
-
 include 'searchform.html.php';

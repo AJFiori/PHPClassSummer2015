@@ -57,9 +57,10 @@
                <!-- <input type="button" value="Search"/> -->
                  
             </form>
-        
+                    <br />
+                    <?php echo $results; ?>
 
 </center>
-    
+                
 </body>
 </html>

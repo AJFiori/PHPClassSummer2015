@@ -38,11 +38,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID </th>
-                    <th>FirstName </th>
-                    <th>LastName </th>
-                    <th>dob </th>
-                    <th>height </th>
+                    <th>ID &nbsp; &nbsp;</th> 
+                    <th>First Name &nbsp; &nbsp;</th> 
+                    <th>Last Name &nbsp; &nbsp;</th> 
+                    <th>Date of Birth &nbsp; &nbsp; &nbsp; &nbsp;</th> 
+                    <th>Height</th> 
                     
                 </tr>
             </thead>
@@ -73,6 +73,7 @@
                 
             <?php endforeach; ?>
         </table>
+        <br />
          <input type="button" value="Back" onClick="location.href='view.php'"/>
         
     </div>

@@ -1,5 +1,6 @@
 html{background-image:url(image/movie.jpg);
      background-repeat:repeat;
+     background-size: cover;
      
 }
 

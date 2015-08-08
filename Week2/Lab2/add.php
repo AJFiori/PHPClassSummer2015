@@ -6,6 +6,7 @@
     </head>
     <body>
         <?php
+        /*Connects to the database and inserts the information*/
         include './dbconnect.php';
         include './functions.php';
         $results = '';

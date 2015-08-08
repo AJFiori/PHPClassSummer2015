@@ -34,7 +34,7 @@
         ?>
       
     
-
+<!--Header text and form outline -->
 <center>
     <div id=wrapper>
             <h1>Actor Database</h1>
@@ -58,7 +58,7 @@
                  
             </form>
                     <br />
-                    <?php echo $results; ?>
+                    
 
 </center>
                 

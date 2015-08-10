@@ -1,45 +1,38 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style3.css">
-        <title></title>
+        <title>Corps</title>
     </head>
     <body>
         <?php
-        include './dbconnect.php';
-        include './functions.php';
-        $results = '';
-        if (isPostRequest()) {
+        
+            include './dbconnect.php';
+            include './functions.php';
+           
             $db = getDatabase();
-            $stmt = $db->prepare("INSERT INTO corps SET corp = :corp, incorp_dt = Now(),email = :email, zipcode = :zipcode, owner = :owner, phone = :phone");
-
-            $corp = filter_input(INPUT_POST, 'corp');
-            $email = filter_input(INPUT_POST, 'email');
-            $zipcode = filter_input(INPUT_POST, 'zipcode');
-            $owner = filter_input(INPUT_POST, 'owner');
-            $phone = filter_input(INPUT_POST, 'phone');
+            $id = filter_input(INPUT_GET, 'id'); 
+            $stmt = $db->prepare("DELETE FROM corps where id = :id");
             $binds = array(
-                ":corp" => $corp,
-                ":email" => $email,
-                ":zipcode" => $zipcode,
-                ":owner" => $owner,
-                ":phone" => $phone
-                    
+                ":id" => $id
             );
-            if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-                $results = 'Data Deleted';
-            } else {
-                
-            }
-        } 
- 
+       
+        $isDeleted = false;
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+            $isDeleted = true;
+        }       
+        
         ?>
-        <?php $results ?>
+                
+        <h1> Record <?php echo $id; ?>
+         <?php if ( !$isDeleted ): ?> 
+          Not
+        <?php endif; ?>
+        Deleted</h1>
+        
+        <input type="button" value="Go Back" onClick="location.href='view.php'"/>
+        
+        
+        
     </body>
 </html>

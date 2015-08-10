@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style3.css">
-        <title></title>
+        <title>Corps</title>
     </head>
     <body>
         
@@ -19,9 +19,9 @@ and open the template in the editor.
                  
                 $value = filter_input(INPUT_GET, 'corp');
                 $db = getDatabase();
-                $stmt = $db->prepare("SELECT * FROM corps WHERE corp LIKE CONCAT(:value,'%')");
+                $stmt = $db->prepare("SELECT * FROM corps WHERE id =:value");
                 $binds = array(
-                    ":value"=>strtoupper($value)
+                    ":value"=>$value
                 );
                 $results = array();
                 if($stmt->execute($binds) && $stmt->rowCount() > 0) {
@@ -45,7 +45,7 @@ and open the template in the editor.
     </Center>    
        
     <center>
-<input type="button" value="Main" onClick="location.href='Index.php'"/>&nbsp;&nbsp;<input type="button" value="Go Back" onClick="location.href='view.php'"/>&nbsp;&nbsp;<input type="button" value="Update" onClick="location.href='view.php'"/>&nbsp;&nbsp;<input type="button" value="Delete" onClick="location.href='view.php'"/>
+<input type="button" value="Main" onClick="location.href='Index.php'"/>&nbsp;&nbsp;<input type="button" value="Go Back" onClick="location.href='view.php'"/>&nbsp;&nbsp;<input type="button" value="Update" onClick="location.href='update.php'"/>&nbsp;&nbsp;<input type="button" value="Delete" onClick="location.href='delete.php?id=<?php echo $row['id']?>'"/>
     </center>
     </body>
 </html>

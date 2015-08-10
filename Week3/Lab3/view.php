@@ -70,7 +70,7 @@
             
             <?php foreach ($results as $row): ?>
                 <tr>
-                    <td> <a href='read.php?corp=<?php echo $row['corp']; ?>'><?php echo $row['corp']; ?></td>
+                    <td> <a href='read.php?corp=<?php echo $row['id']; ?>'><?php echo $row['corp']; ?></td>
                     <td><?php echo $row['zipcode']; ?></td>
                     <td><?php echo $row['owner']; ?></td>
                     

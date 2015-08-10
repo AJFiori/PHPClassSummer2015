@@ -45,7 +45,7 @@ and open the template in the editor.
     </Center>    
        
     <center>
-<input type="button" value="Main" onClick="location.href='Index.php'"/>&nbsp;&nbsp;<input type="button" value="Go Back" onClick="location.href='view.php'"/>
+<input type="button" value="Main" onClick="location.href='Index.php'"/>&nbsp;&nbsp;<input type="button" value="Go Back" onClick="location.href='view.php'"/>&nbsp;&nbsp;<input type="button" value="Update" onClick="location.href='view.php'"/>&nbsp;&nbsp;<input type="button" value="Delete" onClick="location.href='view.php'"/>
     </center>
     </body>
 </html>

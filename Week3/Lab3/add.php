@@ -14,17 +14,15 @@
         $results = '';
         if (isPostRequest()) {
             $db = getDatabase();
-            $stmt = $db->prepare("INSERT INTO corps SET corp = :corp, incorp_dt = :incorp_dt,email = :email, zipcode = :zipcode, owner = :owner, phone = :phone");
+            $stmt = $db->prepare("INSERT INTO corps SET corp = :corp, incorp_dt = Now(),email = :email, zipcode = :zipcode, owner = :owner, phone = :phone");
 
             $corp = filter_input(INPUT_POST, 'corp');
-            $incorp_dt = filter_input(INPUT_POST, 'incorp_dt');
             $email = filter_input(INPUT_POST, 'email');
             $zipcode = filter_input(INPUT_POST, 'zipcode');
             $owner = filter_input(INPUT_POST, 'owner');
             $phone = filter_input(INPUT_POST, 'phone');
             $binds = array(
                 ":corp" => $corp,
-                ":incorp_dt" => $incorp_dt,
                 ":email" => $email,
                 ":zipcode" => $zipcode,
                 ":owner" => $owner,
@@ -70,9 +68,10 @@
                 <br/>
                 <br/>
                 <input type="submit" value="Submit"/> <input type="button" value="Cancel" onClick="location.href='Index.php'"/>
-               
-                 
+                                
             </form>
+    <br/>
+    <?php echo $results ?>
                     <br />
 </center>
         

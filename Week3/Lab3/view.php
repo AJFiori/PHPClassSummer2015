@@ -3,16 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style3.css">
-        <title>Corps</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+         <title>Atlas Corporation</title>
     </head>
     <body>
-      <!--Connect to database-->
+<!--Connect to database-->
         <?php
         include './dbconnect.php';
         include './functions.php';
          ?>  
         
-        <!--searches database for everything-->
+<!--searches database for everything-->
              <?php
                 $value = filter_input(INPUT_GET, 'search');
                 $type = filter_input(INPUT_GET, 'searchby');
@@ -60,25 +61,39 @@
                 }
                 ?>
        
-        <table>
+        <!-- table -->
+    <center>
+        <br/><br/>
+        
+<!--Header Image-->
+    <img src="image/AC3.png" alt="AC" height="100" width="500">
+    </center>
+        <br/>
+        <table class="table table-striped">
             <thead>
-                    <th>Corp</th>  
-                    <th>Zip Code</th>
-                    <th>Owner</th>  
+                    <th>Atlas Corporations:</th>
+                    <th>Date:</th>
+                    <th>Zip Code:</th>
+                    <th>Owner:</th> 
+                    <th>Update:</th>
+                    <th>Delete:</th>
                     
             </thead>
             
+<!-- buttons to update & delete -->
             <?php foreach ($results as $row): ?>
                 <tr>
-                    <td> <a href='read.php?corp=<?php echo $row['id']; ?>'><?php echo $row['corp']; ?></td>
-                    <td><?php echo $row['zipcode']; ?></td>
-                    <td><?php echo $row['owner']; ?></td>
-                    
+        <td> <a href='read.php?corp=<?php echo $row['id']; ?>'><?php echo $row['corp']; ?></td>
+        <td><?php echo $row['incorp_dt']."";?></td>
+        <td><?php echo $row['zipcode']; ?></td>
+        <td><?php echo $row['owner']; ?>
+    <td><input type="button" class="btn btn-success" value="Update" onClick="location.href='update.php?id=<?php echo $row['id']?>'"/></td>
+    <td><input type="button" class="btn btn-danger" value="Delete" onClick="location.href='delete.php?id=<?php echo $row['id']?>'"/></td>
                 </tr>
             <?php endforeach; ?>
         </table>
     <center>
-<input type="button" value="Go Back" onClick="location.href='Index.php'"/>
+<input type="button" class="btn btn-default" value="Go Back" onClick="location.href='Index.php'"/>
     </center>
     </body>
 </html>

@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style3.css">
-        <title>Corps</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <title>Atlas Corporation</title>
     </head>
     <body>
         
@@ -28,24 +23,25 @@ and open the template in the editor.
                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
         ?>
+        <br/><br/>
+        
+ <!--writes out the list-->
     <center>
+        <form class="form-inline">
         <?php foreach ($results as $row): ?>
         <h1><?php echo $row['corp']?></h1>
-        <p> Date:</p>
-        <p><?php echo $row['incorp_dt']."";?></p>
-        <p>Email:</P>
-        <p><?php echo $row['email']."";?></p>
-        <p>Zip Code:</P>
-        <p><?php echo $row['zipcode']."";?></p>
-        <P>Owner:</P>
-        <p><?php echo $row['owner']."";?></p>
-        <p>Phone:</P>
-        <p><?php echo $row['phone']."";?></p>
+        <p>Date:  <b><?php echo $row['incorp_dt']."";?></b></p>
+        <p>Email:  <b><?php echo $row['email']."";?></b></p>
+        <p>Zip Code:  <b><?php echo $row['zipcode']."";?></b></p>
+        <P>Owner:  <b><?php echo $row['owner']."";?></b></p>
+        <p>Phone:  <b><?php echo $row['phone']."";?></p>
     <?php endforeach;?>
+        </form>
     </Center>    
-       
+     
+ <!--Wanted buttons to be all on the same line-->
     <center>
-<input type="button" value="Main" onClick="location.href='Index.php'"/>&nbsp;&nbsp;<input type="button" value="Go Back" onClick="location.href='view.php'"/>&nbsp;&nbsp;<input type="button" value="Update" onClick="location.href='update.php'"/>&nbsp;&nbsp;<input type="button" value="Delete" onClick="location.href='delete.php?id=<?php echo $row['id']?>'"/>
+<input type="button" class="btn btn-default" value="Main" onClick="location.href='Index.php'"/>&nbsp;&nbsp;<input type="button" class="btn btn-default" value="Go Back" onClick="location.href='view.php'"/>&nbsp;&nbsp;<input type="button" class="btn btn-default" value="Update" onClick="location.href='update.php?id=<?php echo $row['id']?>'"/>&nbsp;&nbsp;<input type="button" class="btn btn-default" value="Delete" onClick="location.href='delete.php?id=<?php echo $row['id']?>'"/>
     </center>
     </body>
 </html>

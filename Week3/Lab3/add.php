@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
     
-    <!-- Needs Data-->
+
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style3.css">
-        <title>Corps</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <title>Atlas Corporation</title>
+    <center>  
+    <br/><br/>
+<!--Header Image-->
+    <img src="image/AC3.png" alt="AC" height="100" width="500">
+    </center>
     </head>
     <body>
       <?php
@@ -37,41 +43,65 @@
         }
  
         ?>
+        
+     
 <center>
+<!--Adds New information into the database-->
     <div id=wrapper>
-            <h1>Corp</h1>
+          
     </div>
             <form method="post" action="#"> 
-                Company Name:
+                <br/><br/>
+                <b>Company Name:</b>
                 <br/>
                 <input type="text" value="" name="corp" autofocus="autofocus"/>
                 <br/>
                 <br/>
-                Email:  
+                <b>Email:</b>  
                 <br/>
                 <input type="text" value="" name="email" />
                 <br/>
                 <br/>
-                Zip Code: 
+                <b>Zip Code:</b> 
                 <br/>
                 <input type="zipcode" value="" name="zipcode"/>
                 <br/>
                 <br/>
-                Owner:  
+                <b>Owner:</b>  
                 <br/>
                 <input type="text" value="" name="owner" />
                 <br/>
                 <br/>
-                Phone: 
+                <b>Phone:</b> 
                 <br/>
                 <input type="text" value="" name="phone" />
                 <br/>
                 <br/>
-                <input type="submit" value="Submit"/> <input type="button" value="Cancel" onClick="location.href='Index.php'"/>
+                <input type="submit" class="btn btn-default" value="Submit"/> <input type="button" class="btn btn-default" value="Cancel" onClick="location.href='Index.php'"/>
                                 
             </form>
     <br/>
-    <?php echo $results ?>
+    <div class="box--add-message"><?php echo $results; ?></div>
+        
+        <script type="text/javascript">
+            
+            /* use this selector to grab html items by CSS selectors */
+            var message = document.querySelector('.box--add-message');
+            
+            /* JavaScript function that will run a function after waiting */
+            setTimeout(fadeAddMessage, 1000);
+            setTimeout(hideAddMessage, 4000);
+            
+            /* custom JavaScript functions that will add a class to the selected HTML div */
+            function hideAddMessage() {
+                message.classList.add('hide');
+            }
+            
+            function fadeAddMessage() {
+                 message.classList.add('fade');
+            }
+            
+        </script>
                     <br />
 </center>
         

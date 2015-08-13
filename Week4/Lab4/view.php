@@ -15,50 +15,30 @@
         
 <!--searches database for everything-->
              <?php
+                                       
                 $value = filter_input(INPUT_GET, 'search');
                 $type = filter_input(INPUT_GET, 'searchby');
+                $org = array();
                 $db = getDatabase();
-                if($type=='Name')
-                {
-                $stmt = $db->prepare("SELECT * FROM corps WHERE corp LIKE CONCAT(:value,'%')");
-                $binds = array(
-                    ":value"=>$value
-                );
-                $results = array();
-                if($stmt->execute($binds) && $stmt->rowCount() > 0) {
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                }
-                }
-                else if($type=='Zip Code')
-                {
-                $stmt = $db->prepare("SELECT * FROM corps WHERE zipcode LIKE CONCAT(:value,'%')");
-                $binds = array(
-                    ":value"=>$value
-                );
-                $results = array();
-                if($stmt->execute($binds) && $stmt->rowCount() > 0) {
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                }
-                }
-                else if($type=='Owner')
-                {
-                $stmt = $db->prepare("SELECT * FROM corps WHERE owner LIKE CONCAT(:value,'%')");
-                $binds = array(
-                    ":value"=>$value
-                );
-                $results = array();
-                if($stmt->execute($binds) && $stmt->rowCount() > 0) {
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                }
-                }
-                else
-                {
-                $stmt = $db->prepare("SELECT * FROM corps");
-                $results = array();
-                if($stmt->execute() && $stmt->rowCount() > 0) {
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                }
-                }
+    switch ($type) {
+                    case 'Name': //if searchedBy Name
+                        $stmt = $db->prepare("SELECT * FROM corps WHERE corp LIKE CONCAT(:value,'%')");
+                        $org['value'] = strtoupper($value);
+                        break;
+                    case 'Zip Code': //if searchedBy Zip Code
+                        $stmt = $db->prepare("SELECT * FROM corps WHERE zipcode LIKE CONCAT(:value,'%')");
+                        $org['value'] = $value;
+                        break;
+                    case 'Owner': //if searchedBy Owner
+                        $stmt = $db->prepare("SELECT * FROM corps WHERE owner LIKE CONCAT(:value,'%')");
+                        $org['value'] = strtoupper($value);
+                        break;
+                    default: //if search string is empty
+                        $stmt = $db->prepare("SELECT * FROM corps");
+                    }
+                                if ($stmt && $stmt->execute($org)) {
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    }
                 ?>
        
         <!-- table -->
@@ -80,14 +60,13 @@
                     <th>Update:</th>
                     <th>Delete:</th>
                     
-                    
             </thead>
             
 <!-- buttons to update & delete -->
-            <?php foreach ($results as $row): ?>
+  <?php foreach ($results as $row): ?>
                 <tr>
         <td> <a href='read.php?corp=<?php echo $row['id']; ?>'><?php echo $row['corp']; ?></td>
-        <td><?php echo $row['incorp_dt']."";?></td>
+        <td><?php echo  date("F j, Y, g:i a",strtotime($row['incorp_dt'])); ?></td>
         <td><?php echo $row['email']; ?></td>
         <td><?php echo $row['zipcode']; ?>
         <td><?php echo $row['owner']; ?>

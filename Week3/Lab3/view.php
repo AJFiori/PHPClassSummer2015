@@ -84,7 +84,7 @@
             <?php foreach ($results as $row): ?>
                 <tr>
         <td> <a href='read.php?corp=<?php echo $row['id']; ?>'><?php echo $row['corp']; ?></td>
-        <td><?php echo $row['incorp_dt']."";?></td>
+        <td><?php echo  date("F j, Y, g:i a",strtotime($row['incorp_dt'])); ?></td>
         <td><?php echo $row['zipcode']; ?></td>
         <td><?php echo $row['owner']; ?>
     <td><input type="button" class="btn btn-success" value="Update" onClick="location.href='update.php?id=<?php echo $row['id']?>'"/></td>

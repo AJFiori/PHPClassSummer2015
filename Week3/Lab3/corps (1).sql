@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2015 at 07:10 PM
+-- Generation Time: Aug 13, 2015 at 05:37 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -141,8 +141,7 @@ INSERT INTO `corps` (`id`, `corp`, `incorp_dt`, `email`, `zipcode`, `owner`, `ph
 (98, 'Malesuada Corp.', '2015-05-06 13:14:47', 'congue.a.aliquet@famesac.org', '67201', 'Gray Roberson', '(385) 695-2879'),
 (99, 'Odio Vel Est LLP', '2015-02-26 21:52:25', 'tristique.pharetra@lacusQuisqueimperdiet.net', '93470', 'Jolie Barton', '(742) 818-6378'),
 (100, 'Eu Tempor Inc.', '2015-02-12 00:38:12', 'nascetur.ridiculus@luctus.org', '82479', 'Kyle Mejia', '(241) 578-5052'),
-(108, 'Surfline', '2015-08-11 15:01:43', 'AJFioriiii@email.neit.edu', '02886', 'Anthony', '4013164996'),
-(110, 'lmfao', '2015-08-11 15:40:16', 'AJFioriiii@email.neit.edu', '02886', 'Anthony', '4013164996');
+(108, 'Surfline', '2015-08-11 15:01:43', 'AJFioriiii@email.neit.edu', '02886', 'Anthony', '4013164996');
 
 --
 -- Indexes for dumped tables

@@ -23,7 +23,7 @@
         $action = filter_input(INPUT_GET, 'action');
         if ($action === 'sort')
         {
-        //Sorts columns 
+        //Sorts columns so you can view in certain ways
             $column = filter_input(INPUT_GET, 'sortBy');
             $order = filter_input(INPUT_GET, 'sortOrder');
             $results = sortDatabase($column, $order);

@@ -23,8 +23,9 @@
         $action = filter_input(INPUT_GET, 'action');
         if ($action === 'sort')
         {
+        //Sorts columns 
             $column = filter_input(INPUT_GET, 'sortBy');
-            $order = filter_input(INPUT_GET, 'sortOrder'); //ASC or DESC
+            $order = filter_input(INPUT_GET, 'sortOrder');
             $results = sortDatabase($column, $order);
         }
         if ($action === 'search')

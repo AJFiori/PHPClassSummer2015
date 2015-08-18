@@ -11,6 +11,7 @@
         <?php
         include './dbconnect.php';
         include './util.php';
+        include './dbData.php';
          ?>  
         
 <!--searches database for everything-->
@@ -18,25 +19,83 @@
                                        
                 $value = filter_input(INPUT_GET, 'search');
                 $type = filter_input(INPUT_GET, 'searchby');
+                $action = filter_input(INPUT_POST, 'action');
                 $org = array();
                 $db = getDatabase();
+                
+                if ( $action === 'Search' ) {
+       
+        $column = filter_input(INPUT_POST, 'Search');
+        $search = filter_input(INPUT_POST, 'searchby');
+        $sresults = searchTest($column, $search);
+                }
+        
+                
     switch ($type) {
-                    case 'Name': //if searchedBy Name
+         //searches by corp
+                    case 'corp': 
                         $stmt = $db->prepare("SELECT * FROM corps WHERE corp LIKE CONCAT(:value,'%')");
-                        $org['value'] = strtoupper($value);
+                        $binds = array(
+                        ":value" => strtoupper($value)
+                        );
+                        $results = array();
+                    if ($stmt->execute($binds)&& $stmt->rowCount() > 0) {
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);}
                         break;
-                    case 'Zip Code': //if searchedBy Zip Code
+         //searches by Date
+                    case 'incorp_dt': //searches by Date
+                        $stmt = $db->prepare("SELECT * FROM corps WHERE incorp_dt LIKE CONCAT(:value,'%')");
+                        $binds = array(
+                        ":value" => strtoupper($value)
+                        );
+                        $results = array();
+                    if ($stmt->execute($binds)&& $stmt->rowCount() > 0) {
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);}
+                        break;
+         //searches by Email
+                    case 'email': 
+                        $stmt = $db->prepare("SELECT * FROM corps WHERE email LIKE CONCAT(:value,'%')");
+                        $binds = array(
+                        ":value" => strtoupper($value)
+                        );
+                        $results = array();
+                    if ($stmt->execute($binds)&& $stmt->rowCount() > 0) {
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);}
+                        break;
+         //searches by Zip Code
+                    case 'zipcode':
                         $stmt = $db->prepare("SELECT * FROM corps WHERE zipcode LIKE CONCAT(:value,'%')");
-                        $org['value'] = $value;
+                        $binds = array(
+                        ":value" => strtoupper($value)
+                        );
+                        $results = array();
+                    if ($stmt->execute($binds)&& $stmt->rowCount() > 0) {
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);}
                         break;
-                    case 'Owner': //if searchedBy Owner
+         //searches by Owner
+                    case 'owner': 
                         $stmt = $db->prepare("SELECT * FROM corps WHERE owner LIKE CONCAT(:value,'%')");
-                        $org['value'] = strtoupper($value);
+                        $binds = array(
+                        ":value" => strtoupper($value)
+                        );
+                        $results = array();
+                    if ($stmt->execute($binds)&& $stmt->rowCount() > 0) {
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);}
+                        break;
+         //searches by Phone
+                    case 'phone':
+                        $stmt = $db->prepare("SELECT * FROM corps WHERE phone LIKE CONCAT(:value,'%')");
+                        $binds = array(
+                        ":value" => strtoupper($value)
+                        );
+                        $results = array();
+                    if ($stmt->execute($binds)&& $stmt->rowCount() > 0) {
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);}
                         break;
                     default: //if search string is empty
                         $stmt = $db->prepare("SELECT * FROM corps");
                     }
-                                if ($stmt && $stmt->execute($org)) {
+                    if ($stmt && $stmt->execute($org)) {
                     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     }
                 ?>
@@ -44,6 +103,15 @@
         <!-- table -->
     <center>
         <br/><br/>
+        
+            <?php if ( $action === 'View All' ) {
+       
+        $searchby = filter_input(INPUT_POST, 'searchby');
+        $orderBy = filter_input(INPUT_POST, 'orderBy');
+        $oresults = getALLTestData($searchby, $orderBy);
+        }
+        ?>
+        
         
 <!--Header Image-->
     <img src="image/AC3.png" alt="AC" height="100" width="500">

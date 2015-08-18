@@ -30,7 +30,7 @@
         <form class="form-inline">
         <?php foreach ($results as $row): ?>
         <h1><?php echo $row['corp']?></h1>
-        <p>Date:  <b><?php echo  date("F j, Y, g:i a",strtotime($row['incorp_dt'])); ?></b></p>
+        <p>Date:  <b><?php echo date("F j, Y, g:i a",strtotime($row['incorp_dt'])); ?></b></p>
         <p>Email:  <b><?php echo $row['email']."";?></b></p>
         <p>Zip Code:  <b><?php echo $row['zipcode']."";?></b></p>
         <P>Owner:  <b><?php echo $row['owner']."";?></b></p>

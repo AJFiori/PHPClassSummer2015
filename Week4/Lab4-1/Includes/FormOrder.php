@@ -1,16 +1,18 @@
 
 <!-- Creates drop menu and can be searched by ASC or DESC -->
+<link rel="stylesheet" type="text/css" href="style3.css">
 <form action="#" method="get">
-<center>
-        <br><br>
-        <br>
-        <label>Ascending Order</label><input type="radio" name="sortOrder" value="ASC" />||
-        <label>Descending Order:</label><input type="radio" name="sortOrder" value="DESC" />
-
-        <br><br>
-      
-        <label>Sort By:</label> 
+    <center>   
         <br/>
+        <center>
+        <label>Ascending Order:</label>&nbsp;&nbsp;<input type="radio" name="sortOrder" value="ASC" />&nbsp;&nbsp;||&nbsp;&nbsp;
+        <label>Descending Order:</label>&nbsp;&nbsp;<input type="radio" name="sortOrder" value="DESC" />
+        </center>
+       
+        <br>
+        <div class="Order">
+                <label>Search By:</label>  
+       <br/>
         <select class="btn btn-default" name="sortBy">
             <option value="id">ID</option>
             <option value="corp">Corporation Name</option>
@@ -26,6 +28,7 @@
         
         <input type="hidden" name="action" value="sort" />
         <input type="submit" class="btn btn-default" value="Submit" />
-        <input type="reset" class="btn btn-default" value="Clear" onClick="location.href='view.php'" />
-</center>  
+        <input type="reset" class="btn btn-default" value="Clear" onClick="location.href='view.php'" /> 
+        </div>
+</center> 
 </form>

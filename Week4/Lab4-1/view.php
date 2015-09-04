@@ -13,7 +13,7 @@
        <center>
 <!--Header Image-->
     <img src="image/AC3.png" alt="AC" height="100" width="500">
-    
+       </center>
     <?php
         include_once './functions/dbconnect.php';
         include_once './functions/dbData.php';
@@ -23,7 +23,8 @@
         $action = filter_input(INPUT_GET, 'action');
         if ($action === 'sort')
         {
-        //Sorts columns so you can view in certain ways
+
+//Sorts columns so you can view in certain ways
             $column = filter_input(INPUT_GET, 'sortBy');
             $order = filter_input(INPUT_GET, 'sortOrder');
             $results = sortDatabase($column, $order);
@@ -33,12 +34,20 @@
             $column = filter_input(INPUT_GET, 'searchColumn');
             $userSearch = filter_input(INPUT_GET, 'userSearch');
             $results = searchDatabase($column, $userSearch);
+//Counts Columns 
+            $columnCount = count($results);
+            
+            if ($columnCount > 0)
+            {
+                echo "<h4><b>Total Results: " . $columnCount . "</h4></b>";
+            }
+            else
+            {
+                echo "<h4><b>No Results Found</h4></b>";
+            }
         }
         ?>
-        <br>
         
-    </center>
-        <br/>
         <table class="table table-striped">
             <thead>
                     <th>ID:</th>
@@ -54,7 +63,7 @@
                 <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['corp']; ?></td>
-                    <td><?php echo $row['incorp_dt']; ?></td> 
+                    <td><?php echo  date("F j, Y, g:i a",strtotime($row['incorp_dt'])); $row['incorp_dt']; ?></td> 
                     <td><?php echo $row['email']; ?></td> 
                     <td><?php echo $row['zipcode']; ?></td> 
                     <td><?php echo $row['owner']; ?></td> 

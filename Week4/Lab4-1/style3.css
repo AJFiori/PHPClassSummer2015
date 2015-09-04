@@ -6,3 +6,12 @@ body{
 .srch{
     font-size: 20px;
 }
+
+.Order{
+    margin-right:0px;
+}
+
+.Search{
+    margin-top:50px;
+    margin-left:0px;
+}

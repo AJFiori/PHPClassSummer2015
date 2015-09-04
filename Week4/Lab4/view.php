@@ -134,7 +134,7 @@
   <?php foreach ($results as $row): ?>
                 <tr>
         <td> <a href='read.php?corp=<?php echo $row['id']; ?>'><?php echo $row['corp']; ?></td>
-        <td><?php echo  date("F j, Y, g:i a",strtotime($row['incorp_dt'])); ?></td>
+        <td><?php echo  date("F j Y",strtotime($row['incorp_dt'])); ?></td>
         <td><?php echo $row['email']; ?></td>
         <td><?php echo $row['zipcode']; ?>
         <td><?php echo $row['owner']; ?>

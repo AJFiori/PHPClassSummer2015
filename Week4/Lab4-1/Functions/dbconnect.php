@@ -20,7 +20,7 @@ function dbconnect() {
          * connection by setting the variable to null */
         $db = null;
         $message = $ex->getMessage();
-        include './includes/error.php';
+        include './Includes/error.php';
         exit();
     }
     return $db;

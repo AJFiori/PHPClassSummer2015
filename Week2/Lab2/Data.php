@@ -6,23 +6,22 @@
         <title>Actor Database</title>
     </head>
     <body>
+<!-- Connects to database and extracts information into the table -->
         <?php
-        
-        /* Connects to the Database */ 
         include './dbconnect.php';
         include './functions.php';
         
         $db = getDatabase();
        
         $stmt = $db->prepare("SELECT * FROM actors");
-       /* Grabs results from the database */
+
         $results = array();
         if ($stmt->execute() && $stmt->rowCount() > 0) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         ?>
         
-        <!--Creates the table-->
+<!--Creates the table-->
     <center>
     <div id='table'>
         

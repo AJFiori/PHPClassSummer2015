@@ -2,10 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style3.css">
+        <link rel="stylesheet" type="text/css" href="Style3.css">
+        
         <title>Actor Database</title>
     </head>
     <body>
+ <!-- Connects to the database and inputs info -->
       <?php
         include './dbconnect.php';
         include './functions.php';
@@ -52,8 +54,8 @@
                Height:  <input type="text" value="" name="height" />
                 <br/>
                 <br/>
-                <input type="submit" value="Submit"/>
-                <input type="button" value="View Data" onClick="location.href='Data.php'"/>                          
+                <input type="submit"  value="Submit"/>
+                <input type="button"  value="View Data" onClick="location.href='Data.php'"/>                          
                <!-- <input type="button" value="Search"/> -->
                  
             </form>

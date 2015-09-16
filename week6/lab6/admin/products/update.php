@@ -37,19 +37,21 @@
         ?>
     <center>
         <h1>Update Product</h1>
-        
-        
+
         <form method="post" action="#">
             <div class="form-group"> 
             New Product Name:
-            <br/>
-            <input type="text" name="product" value=""/><br />
+            <br/><br/>
+            <input type="text" name="product" value=""/>
+            <br /><br/>
             Price: 
-            <br/>
+            <br/><br/>
             <input type="text" name="price" value="" />
-            <input class="btn btn-default" type="submit" value="Submit" /></div>
+            <br/><br/>
+<input class="btn btn-default" type="submit" value="Submit" /> 
+            </div>
         </form>
-            <button class="btn btn-default" onClick="location.href='index.php'">Back</button><br/>
+            <button class="btn btn-default" onClick="location.href='../index.php'">Back</button><br/>
             <br/><br/>
             <?php include '../../includes/results.html.php'; ?>
     </center>

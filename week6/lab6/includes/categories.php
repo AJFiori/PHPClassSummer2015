@@ -1,9 +1,22 @@
+
+<link rel="stylesheet" href="../css/style3.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
+
+
 <p><?php echo getCartCount(); ?>  items in cart</p>
 
 <?php if ( isset($allCategories) ) : ?>
-<ul class="list-unstyled">    
+<center>
+    <table class="table table-striped">
+        <thead>
+                <tr> 
     <?php foreach ($allCategories as $row): ?>
-        <li><a href="?cat=<?php echo $row['category_id']; ?>"><?php echo $row['category']; ?></a></li>    
+                    <th>All Categories:</th>
+                    <td><a href="?cat=<?php echo $row['category_id']; ?>"><?php echo $row['category']; ?></a></td>
+                       
+                </tr>
+        </thead>
     <?php endforeach; ?> 
-</ul>       
+    </table>    
+</center>
 <?php endif; ?>

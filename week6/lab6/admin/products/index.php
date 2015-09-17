@@ -29,7 +29,8 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>All Categories:</th>
+                    <th>All Products:</th>
+                    <th>Price:</th>
                     <th>Update:</th>
                     <th>Delete:</th>
                  </tr>   

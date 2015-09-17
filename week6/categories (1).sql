@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2015 at 10:42 PM
+-- Generation Time: Sep 17, 2015 at 04:07 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -36,11 +36,9 @@ CREATE TABLE IF NOT EXISTS `categories` (
 --
 
 INSERT INTO `categories` (`category_id`, `category`) VALUES
-(43, 'music'),
-(44, 'pants'),
-(42, 'Shoes'),
-(23, 'Surfboards'),
-(40, 'taco');
+(43, 'Bands'),
+(40, 'Food'),
+(23, 'Surfboards');
 
 --
 -- Indexes for dumped tables

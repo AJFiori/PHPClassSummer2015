@@ -61,17 +61,17 @@ function isValidName($name)
 
 function addNewItem($newData)
 {
-   /*
-     *0 user_id
-     *1 address_group_id
-     *2 fullname
-     *3 email
-     *4 address
-     *5 phone
-     *6 website
-     *7 birthday - datetime
-     *8 image - filename
-    */
+/*
+  *0 user_id
+  *1 address_group_id
+  *2 fullname
+  *3 email
+  *4 address
+  *5 phone
+  *6 website
+  *7 birthday - datetime
+  *8 image - filename
+ */
     
     $db = dbconnect();
     $stmt = $db->prepare("INSERT INTO address SET user_id = :user_id, address_group_id = :address_group_id, fullname = :fullname, email = :email, address = :address, phone = :phone, website = :website, birthday = :birthday, image = :image ");
@@ -97,17 +97,17 @@ function addNewItem($newData)
 function validateNewItem($newData)
 {
     $errors = array();
-   /*
-     *0 user_id
-     *1 address_group_id
-     *2 fullname
-     *3 email
-     *4 address
-     *5 phone
-     *6 website
-     *7 birthday - datetime
-     *8 image - filename
-    */
+/*
+  *0 user_id
+  *1 address_group_id
+  *2 fullname
+  *3 email
+  *4 address
+  *5 phone
+  *6 website
+  *7 birthday - datetime
+  *8 image - filename
+ */
     
     if (!isValidName($newData[2]))
     {
@@ -138,13 +138,13 @@ function uploadImage() {
     
     try {
 
-        // Undefined | Multiple Files | $_FILES Corruption Attack
-        // If this request falls under any of them, treat it invalid.
+// Undefined | Multiple Files | $_FILES Corruption Attack
+// If this request falls under any of them, treat it invalid.
         if ( !isset($_FILES['upfile']['error']) || is_array($_FILES['upfile']['error']) ) {       
             throw new RuntimeException('Invalid parameters.');
         }
 
-        // Check $_FILES['upfile']['error'] value.
+// Check $_FILES['upfile']['error'] value.
         switch ($_FILES['upfile']['error']) {
             case UPLOAD_ERR_OK:
                 break;
@@ -157,7 +157,7 @@ function uploadImage() {
                 throw new RuntimeException('Unknown errors.');
         }
 
-        // You should also check filesize here. 
+// You should also check filesize here. 
         if ($_FILES['upfile']['size'] > 1000000) {
             throw new RuntimeException('Exceeded filesize limit.');
         }
@@ -177,9 +177,9 @@ function uploadImage() {
             throw new RuntimeException('Invalid file format.');
         }
 
-        // You should name it uniquely.
-        // DO NOT USE $_FILES['upfile']['name'] WITHOUT ANY VALIDATION !!
-        // On this example, obtain safe unique name from its binary data.
+// You should name it uniquely.
+// DO NOT USE $_FILES['upfile']['name'] WITHOUT ANY VALIDATION !!
+// On this example, obtain safe unique name from its binary data.
 
         $fileName =  sha1_file($_FILES['upfile']['tmp_name']); 
         $location = sprintf('images/%s.%s', $fileName, $ext); 
@@ -188,13 +188,13 @@ function uploadImage() {
             throw new RuntimeException('Failed to move uploaded file.'); 
         }
 
-        /* File is uploaded successfully. */
+// File is uploaded successfully. 
         $imageName = $fileName . '.' . $ext;
         
     } catch (RuntimeException $e) {
         echo $e->getMessage();
 
-        /* There was an error */
+// There was an error 
         
 
     }

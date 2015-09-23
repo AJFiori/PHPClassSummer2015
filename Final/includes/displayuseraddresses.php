@@ -4,8 +4,6 @@
 <br/>
 
 <?php
-//form gets $selectedAddressGroupId, $searchIndex and $searchField from user
-//$sortby is set on userdefault page to 'fullname' as a default value
 
     $addressGroups = getAddressGroups();
     $sortBy = 'fullname';
@@ -48,7 +46,7 @@ include 'includes/searchsortform.html.php';
                     <td><?php echo $row['email']; ?></td>
                     <td><?php echo $row['phone']; ?></td>
                     <td>
-                        <form method="post" action="?view=userdefault&user_view=read&view_address_id=<?php echo $row['address_id']?>">
+<form method="post" action="?view=userdefault&user_view=read&view_address_id=<?php echo $row['address_id']?>">
                             <input type="submit" value="View Detail" class="btn btn-default" />
                         </form>
                     </td>

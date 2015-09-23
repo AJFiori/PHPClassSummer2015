@@ -41,9 +41,9 @@
                     <td><a href="mailto:<?php echo $row['email']; ?>"><?php echo $row['email']; ?></a></td>
                 </tr>
                 <tr>
-                    <td><b>Phone</b></td>
-                    <td><b>Website</b></td>
-                    <td><b>Birthday</b></td>
+                    <td><b>Phone:</b></td>
+                    <td><b>Web site:</b></td>
+                    <td><b>Birthday:</b></td>
                 </tr>
                 <tr>
                     <td><a href="tel:<?php echo $row['phone']; ?>"><?php echo $row['phone']; ?></a></td>
@@ -64,11 +64,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="?view=userdefault&user_view=update" class="btn btn-default">Update</a>
+<a href="?view=userdefault&user_view=update" class="btn btn-default">Update</a> &nbsp;<a href="?view=userdefault&user_view=delete" class="btn btn-default">Delete</a>
                     </td>                    
-                    <td>
-                        <a href="?view=userdefault&user_view=delete" class="btn btn-default">Delete</a>
-                    </td>
+                    
                 </tr>    
             <?php endforeach; ?>
         </table>

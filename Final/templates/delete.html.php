@@ -11,7 +11,7 @@
 
 
 <form method="post" action="?view=userdefault">
-    <input type="submit" value="Return To View All" class="btn btn-default" />
+    <input type="submit" value="Main Page" class="btn btn-default" />
 </form>
 
 <hr>
@@ -36,7 +36,7 @@
 
     <?php if (!isset($isDeleted)) : ?>
     <form method="post" action="?view=userdefault&user_view=read&view_address_id=<?php echo $_SESSION['currentAddress'];?>">
-        <input type="submit" value="Return To View Item" class="btn btn-default" />
+        <input type="submit" value="Back" class="btn btn-default" />
     </form>
     <br/>
     <div class="warning">

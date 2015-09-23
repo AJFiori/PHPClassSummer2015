@@ -1,0 +1,63 @@
+body{
+            background-image: url(image/BG2_1.jpg);
+            background-size:cover;
+}
+
+.AM{
+    color: #31b0d5;
+}
+
+.LogIn{
+    color: #31b0d5;
+    font-size: 25px;
+}
+
+.SU{
+    color: #31b0d5;
+    font-size: 25px;  
+}
+
+.SUN{
+    color: #31b0d5;
+    font-size: 20px;
+}
+
+.WTOS{
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.row{
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.ANI{
+    color: #31b0d5;
+    font-size: 20px;
+}
+
+.AddrBook{
+    color: #31b0d5;
+    font-size: 20px;
+}
+
+.Cover{
+    color: #31b0d5;
+    font-size: 20px;
+}
+
+.warning{
+    color: #31b0d5;
+    font-size: 20px;
+}
+
+.View{
+    color: #31b0d5;
+    font-size: 20px;
+}
+
+.Error{
+    color: #31b0d5;
+    font-size: 20px;
+}

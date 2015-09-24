@@ -29,7 +29,7 @@ function dbconnect() {
         $db = null;
         $message = $ex->getMessage();
         include '../includes/error.php';
-        exit();
+        
     }
 
     return $db;

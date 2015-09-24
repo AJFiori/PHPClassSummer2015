@@ -9,7 +9,7 @@
     $sortBy = 'fullname';
     $displayUserAddressInfo = getUserAddresses($currentUserID, $sortBy);
 
-include 'includes/searchsortform.html.php';
+include './includes/searchsortform.html.php';
 
 ?>
        

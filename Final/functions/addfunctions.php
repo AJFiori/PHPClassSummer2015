@@ -121,7 +121,7 @@ function validateNewItem($newData)
     
     if (!isValidPhone($newData[5]))
     {
-        $errors[] = "Phone number is not valid, please use format 111-111-1111";
+        $errors[] = "Phone number is not valid, please use format 999-999-9999";
     }
     
     if ( filter_var($newData[6], FILTER_VALIDATE_URL) == false  )

@@ -1,6 +1,6 @@
 <?php
-        require_once 'includes/session-start.req-inc.php';
-        require_once 'includes/access-required.html.php';
+        require_once './includes/session-start.req-inc.php';
+        require_once './includes/access-required.html.php';
         
         $addressToDelete = getSingleAddress($_SESSION['currentUserID'], $_SESSION['currentAddress']);
 ?>
@@ -29,7 +29,7 @@
                 $results = 'Error: address was not deleted.';
             }
         }
-        include 'includes/results.html.php';
+        
     ?>
 
  
@@ -66,6 +66,7 @@
     <?php  endif;  ?>
 
 <?php if (isset($isDeleted)) : ?>
+<div class="Error3">
 <table>
         <table>
             <thead>
@@ -83,5 +84,6 @@
                 <tr><td><img src="images/<?php echo $addressToDelete[0]['image']; ?>" height="100"  /></td></tr>      
             </tr>            
         </table>
+</div>
 <?php endif; ?>
 

@@ -10,11 +10,11 @@ if ( isPostRequest() ) {
 
             if ( doCreateUser($signupemail, $signuppassword) ) 
             {
-                $results = '<h3>New user created</h3>';
+                $results = 'New user created';
             } 
             else 
             {
-                $results = '<h3>Error creating user. Sorry, please try again.<br><br>Ensure email is valid and password includes only letters and numbers.</h3>';
+                $results = 'Error creating user. Sorry, please try again.<br><br>Ensure email is valid and password includes only letters and numbers.';
             }
         }
         else
@@ -34,5 +34,6 @@ if ( isPostRequest() ) {
 
 <?php
 include './includes/signupform.html.php';
+
 ?>
 

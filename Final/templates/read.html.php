@@ -1,6 +1,6 @@
 <?php
-        require_once 'includes/session-start.req-inc.php';
-        require_once 'includes/access-required.html.php';
+        require_once './includes/session-start.req-inc.php';
+        require_once './includes/access-required.html.php';
         $currentAddressID = filter_input(INPUT_GET, 'view_address_id');
         $_SESSION['currentAddress'] = $currentAddressID;
         $viewAddress = getSingleAddress($currentUserID, $currentAddressID);

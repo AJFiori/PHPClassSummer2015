@@ -1,9 +1,10 @@
 <?php
-        require_once 'includes/session-start.req-inc.php';
-        require_once 'includes/access-required.html.php';
+        require_once './includes/session-start.req-inc.php';
+        require_once './includes/access-required.html.php';
 ?>
-
+<div class="Update">
 <h1 class="cover-heading">Make An Update</h1>
+</div>
 
 
 <form method="post" action="?view=userdefault&user_view=read&view_address_id=<?php echo $_SESSION['currentAddress'];?>">
@@ -15,7 +16,7 @@
 
  
         $addressToUpdate = getSingleAddress($_SESSION['currentUserID'], $_SESSION['currentAddress']);
-        $viewdate = date("m/d/Y", strtotime($addressToUpdate[0]['birthday']));
+        $viewdate = date("Y-m-d", strtotime($addressToUpdate[0]['birthday']));
         $newAddressData = array();
         $addressGroups = getAddressGroups();
                 
@@ -57,15 +58,8 @@
             
             
         }
-        include 'includes/updateform.html.php';
+        include './includes/updateform.html.php';
         
         ?>
 
-        <?php if ( isset($errors) && count($errors) > 0 ) : ?>
-            <br>
-            <ul>
-                <?php foreach ($errors as $error): ?>
-                <li><?php echo $error; ?></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
+    

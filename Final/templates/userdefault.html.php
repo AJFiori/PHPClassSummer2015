@@ -50,7 +50,7 @@
                 else
                 {
 // Default view for full address book
-                    include 'includes/displayuseraddresses.php';
+                    include './includes/displayuseraddresses.php';
                 }
 
 ?>

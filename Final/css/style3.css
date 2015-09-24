@@ -57,7 +57,22 @@ body{
     font-size: 20px;
 }
 
-.Error{
+.Update{
     color: #31b0d5;
     font-size: 20px;
 }
+.Error{
+    color: #ff0000;
+    font-size: 20px;
+}
+
+.Error2{
+    color: #ff0000;
+    font-size: 15px;
+}
+
+.Error3{
+    color: #ff0000;
+    font-size: 15px;
+}
+

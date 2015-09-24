@@ -7,7 +7,7 @@
 </div>
 <?php
 
-include 'includes/loginform.html.php';
+include './includes/loginform.html.php';
 
 ?>
 <br/><br/>

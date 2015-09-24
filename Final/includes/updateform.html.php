@@ -10,9 +10,9 @@
                     <td>
                         <select name="selected_address_group" class="form-control">
                         <?php foreach ($addressGroups as $row): ?>
-                        <option value="<?php echo $row['address_group_id'];?>" <?php if ($addressToUpdate[0]['address_group_id'] == $row['address_group_id']) echo 'selected'; ?>>
+    <option value="<?php echo $row['address_group_id'];?>" <?php if ($addressToUpdate[0]['address_group_id'] == $row['address_group_id']) echo 'selected'; ?>>
                         <?php echo $row['address_group']; ?>
-                        </option>
+    </option>
                         <?php endforeach; ?>
                         </select>
                     </td>
@@ -33,10 +33,10 @@
             <td>Phone : </td><td><input type="text" name="phone" value="<?php echo $addressToUpdate[0]['phone']; ?>" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Website : </td><td><input type="website" name="website" value="<?php echo $addressToUpdate[0]['website']; ?>" class="form-control" /></td>
+            <td>Web site : </td><td><input type="url" name="website" value="<?php echo $addressToUpdate[0]['website']; ?>" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Birthday : </td><td><input type="text" name="birthday" value="" placeholder="<?php echo $viewdate; ?>" class="form-control" onfocus="(this.type='date')" /></td>
+<td>Birthday : </td><td><input type="date" name="birthday" value="<?php echo $viewdate; ?>" placeholder="<?php echo $viewdate; ?>" class="form-control" onfocus="(this.type='date')" /></td>
         
         </tr>
         <tr>

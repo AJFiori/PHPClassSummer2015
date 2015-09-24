@@ -11,17 +11,20 @@
 
     </head>
     <body>
+ 
         <?php
-            require_once 'includes/session-start.req-inc.php';
+            require_once './includes/session-start.req-inc.php';
             
-            include_once 'functions/dbconnect.php';
-            include_once 'functions/login-function.php';
-            include_once 'functions/signupfunctions.php';
-            include_once 'functions/addfunctions.php';
-            include_once 'functions/updatedeletefunctions.php';
-            include_once 'functions/until.php'; 
+            include_once './functions/dbconnect.php';
+            include_once './functions/login-function.php';
+            include_once './functions/signupfunctions.php';
+            include_once './functions/addfunctions.php';
+            include_once './functions/updatedeletefunctions.php';
+            include_once './functions/until.php'; 
             
-                               
+              ?>
+        
+        <?php
                 $view = filter_input(INPUT_GET, 'view');
                 if ( isPostRequest() ) {
 
@@ -43,7 +46,8 @@
                         }
                     }
         ?>
-        
+            
+       
 
 <br/><br/>
     <center>
@@ -93,7 +97,7 @@
 
                 <?php 
 //output of success or error messages
-                include 'includes/results.html.php'; 
+                include './includes/results.html.php'; 
                 ?>
               
       </div>

@@ -1,6 +1,6 @@
 <?php
-        require_once 'includes/session-start.req-inc.php';
-        require_once 'includes/access-required.html.php';
+        require_once './includes/session-start.req-inc.php';
+        require_once './includes/access-required.html.php';
         
 
 ?>
@@ -49,17 +49,12 @@
             }
             
         }
-        //var_dump($newAddressData);
+        
         ?>
 
-        <?php if ( isset($errors) && count($errors) > 0 ) : ?>
-            <ul>
-                <?php foreach ($errors as $error): ?>
-                <li><?php echo $error; ?></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
- 
-<?php
-        include 'includes/addform.html.php';
-?>
+ <?php
+        include './includes/addform.html.php';
+         
+        ?>
+                
+               

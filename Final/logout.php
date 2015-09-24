@@ -8,7 +8,7 @@
     <body>
         <?php
         
-        include_once 'functions/login-function.php';
+        include_once './functions/login-function.php';
         
         
         logoutSession ();

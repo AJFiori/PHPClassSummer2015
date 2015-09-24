@@ -21,29 +21,29 @@
 
 
         <tr>
-            <td>Full Name : </td><td><input type="text" name="fullname" value="" class="form-control" /></td>
+            <td>Full Name:</td><td><input type="text" name="fullname" value="" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Email : </td><td><input type="email" name="email" value=""  class="form-control" /></td>
+            <td>Email:</td><td><input type="email" name="email" value="" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Address : </td><td><input type="text" name="address" value="" class="form-control" /></td>
+            <td>Address:</td><td><input type="text" name="address" value="" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Phone : </td><td><input type="text" name="phone" value="" class="form-control" /></td>
+            <td>Phone:</td><td><input type="text" name="phone" value="" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Web site : </td><td><input type="website" name="website" value="" placeholder="http://www." class="form-control" /></td>
+            <td>Web site:</td><td><input type="url" name="website" value="" placeholder="http://www." class="form-control" /></td>
         </tr>
         <tr>
-            <td>Birthday : </td><td><input type="date" name="birthday" value="" class="form-control" /></td>
+            <td>Birthday:</td><td><input type="date" name="birthday" value="<?php echo $viewdate; ?>" class="form-control" /></td>
         </tr>
         <tr>
             <td>Image: </td><td><input name="upfile" type="file" class="btn btn-default" /></td>
         </tr>
         
         </table>
-        <input type="submit" value="Submit" class="btn btn-default" />&nbsp;<input type="button" class="btn btn-default" value="Cancel" onClick="location.href='index.php?view=userdefault'"/>
+        <input type="submit" value="Submit" class="btn btn-default" />&nbsp;<input type="button" class="btn btn-default" value="Back" onClick="location.href='index.php?view=userdefault'"/>
     </div>
 </form>
 

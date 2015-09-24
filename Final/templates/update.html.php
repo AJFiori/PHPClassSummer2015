@@ -52,7 +52,7 @@
             }
             else
             {
-                $results = 'Errors found';
+                $results = '**Errors found**';
             }
             
             

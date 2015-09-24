@@ -14,7 +14,7 @@ if ( isPostRequest() ) {
             } 
             else 
             {
-                $results = 'Error creating user. Sorry, please try again.<br><br>Ensure email is valid and password includes only letters and numbers.';
+                $results = '**Error creating user. Sorry, please try again.<br><br>Ensure email is valid and password includes only letters and numbers.**';
             }
         }
         else

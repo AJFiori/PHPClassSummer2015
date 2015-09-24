@@ -26,7 +26,7 @@
             } 
             else 
             {
-                $results = 'Error: address was not deleted.';
+                $results = '**Error: address was not deleted.**';
             }
         }
         

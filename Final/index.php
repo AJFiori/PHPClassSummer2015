@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Web site is host  www.ajfiorineit.freeiz.com -->
+<!-- Web site host www.ajfiorineit.freeiz.com -->
 <html>
     <head>
         <meta charset="utf-8">

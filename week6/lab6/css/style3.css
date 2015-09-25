@@ -1,4 +1,17 @@
 body{
-            background-image: url(image/BG.png);
+            background-image: url(image/WBG.png);
             background-size:cover;
+            background-repeat: no-repeat;
+            background-color: #000;
+}
+
+
+.head{
+    color: #31b0d5;
+    font-size: 20px;
+}
+
+.Error{
+    color: #31b0d5;
+    font-size: 20px;
 }

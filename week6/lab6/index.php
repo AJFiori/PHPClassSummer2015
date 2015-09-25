@@ -8,7 +8,7 @@
     </head>
     <body>
     <center>
-        <h1>Tony's Discount Store</h1><br />
+        <h1><b>Tony's Discount Store</b></h1><br />
         
         <button class="btn btn-default" onClick="location.href='site/'">Enter Site</button>
         <button class="btn btn-default" onClick="location.href='admin/'">Admin Login</button>

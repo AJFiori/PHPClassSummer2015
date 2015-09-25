@@ -21,25 +21,25 @@
 
 
         <tr>
-            <td>Full Name:</td><td><input type="text" name="fullname" value="" class="form-control" /></td>
+            <td>Full Name:</td><td><input type="text" name="fullname" value="<?php echo isset($_POST["fullname"]) ? $_POST["fullname"] : ''; ?>" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Email:</td><td><input type="email" name="email" value="" class="form-control" /></td>
+            <td>Email:</td><td><input type="email" name="email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Address:</td><td><input type="text" name="address" value="" class="form-control" /></td>
+            <td>Address:</td><td><input type="text" name="address" value="<?php echo isset($_POST["address"]) ? $_POST["address"] : ''; ?>" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Phone:</td><td><input type="text" name="phone" value="" class="form-control" /></td>
+            <td>Phone:</td><td><input type="text" name="phone" value="<?php echo isset($_POST["phone"]) ? $_POST["phone"] : ''; ?>" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Web site:</td><td><input type="url" name="website" value="" placeholder="http://www." class="form-control" /></td>
+            <td>Web site:</td><td><input type="url" name="website" value="<?php echo isset($_POST["website"]) ? $_POST["website"] : ''; ?>" placeholder="http://www." class="form-control" /></td>
         </tr>
         <tr>
             <td>Birthday:</td><td><input type="date" name="birthday" value="<?php echo $viewdate; ?>" class="form-control" /></td>
         </tr>
         <tr>
-            <td>Image: </td><td><input name="upfile" type="file" class="btn btn-default" /></td>
+            <td>Image:</td><td><input name="upfile" type="file" value="" class="btn btn-default" /></td>
         </tr>
         
         </table>

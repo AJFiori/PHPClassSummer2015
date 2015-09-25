@@ -1,0 +1,25 @@
+body{
+            background-image: url(image/BLBG_2.jpg);
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-color: #000;
+}
+
+.head{
+    color: #31b0d5;
+}
+
+.web{
+    color: #79fc9e;
+    font-size: 20px;
+}
+
+.Message{
+    color: #79fc9e;
+    font-size: 20px;
+}
+
+.Error{
+    color: #ff0000;
+    font-size: 20px;
+}

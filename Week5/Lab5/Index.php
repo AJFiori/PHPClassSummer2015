@@ -3,95 +3,130 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Web Site Database</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style3.css">
+        <title>Web site Lookup</title>
     </head>
     <body>
-        <link rel="stylesheet" type="text/css" href="style3.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <?php
-            require './functions/dbConnect.php';
-            require './functions/util.php';
+            
+//Connects to database
+            include './functions/dbconnect.php';
+            include './functions/until.php';        
+            
+
+/*
+ * variables  to update results message, contents of text box 
+ * and an array to hold the links pulled from the entered site through curl
+ */
             
             $results = '';
-            $isValid = true;
-            $textbox = '';
-        ?>
-        
-    <center>
-        <h2>Web Site Database</h2>
-    </center>
-    
-        <center>
-            <br/>
-            <h2>Enter Web Site:</h2>
-            <form class="form-group" action="index.php" method="post">
-                <input type="text" name="site" value="<?php echo $textbox ?>" placeholder="Enter Website Site Here">
-                <br/><br/>
-                <input class="btn btn-default" type="submit" value="Enter New" name="submit" />
-            </form>
-        
-        
-        <?php
-            if (isPostRequest()) {
-                
-                $site1 = filter_input(INPUT_POST, 'site');
-                
-                if ( filter_var($site1, FILTER_VALIDATE_URL) === false ) {
-                    $isValid = false;
-                    $textbox = filter_input(INPUT_POST, 'site');
-                    $results = 'Must Enter A Valid Web Site';
-                    ?>
-                  
-                    
-                <?php }
-                if ($isValid) {
+            $linkValue = "";
+            $linksOnSite = array();
+            
+/*
+ * after submit, check if website is valid
+ * then check if site is already in database
+ * then check if website has curl output
+ * then add the site to the sites database
+ * update message with success or failure
+ */
+            if (isPostRequest()) 
+                {
                     $site = filter_input(INPUT_POST, 'site');
-                
-                
-                    $db = getDatabase();
-                
-                    $stmt = $db->prepare("INSERT INTO sites SET site = :site, date = NOW()");
-            
-                    $binds = array(
-                        ":site" => $site);
-            
-                    if ($stmt->execute($binds)) { 
-                                  //curl
-                        require 'curl.php';
-                                 //regex
-                        require 'regex.php';
-                                //join
-                        require 'join.php';
-                
                     
-                        foreach ($removeDuplicates as $link) { 
-                             $site_id = $db->lastInsertId();
-                             
-                            $stmt2 = $db->prepare("INSERT INTO sitelinks SET link = :link, site_id = :site_id");
-                                $binds = array( 
-                                    ":link" => $link, ":site_id" => $site_id); 
-                            } 
-                            $results2 = array(":link" => $link, ":site_id" => $site_id);
-                            if ($stmt2->execute($binds)) {
-                                $results2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-                        }   } 
+                    if ( filter_var($site, FILTER_VALIDATE_URL) !== false  )
+                    {   
+                           
+                        if (isItemInArray($site, "site", "sites")== false)
+
+                        {                        
+                            if (sendToCurl($site))
+                            {
+                                $linksOnSite = filterRegEx(sendToCurl($site));
+
+                                $db = dbconnect();
+                                $stmt = $db->prepare("INSERT INTO sites SET site = :site, date = now()");
+                                $binds = array(
+                                ":site" => $site                        
+                                );
+
+                                if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
+                                {
+                                    $site_id = $db->lastInsertId();
+                                    
+                                    $stmt2 = $db->prepare("INSERT INTO sitelinks SET site_id = :site_id, link = :link");
+
+                                    foreach ($linksOnSite as $link) {
+                                        $binds = array( ":link" => $link, ":site_id" => $site_id); 
+                                        $stmt2->execute($binds);
+                                    } 
+
+                                    $results = "Site Added: " . $site;
+                                    
+                                    
+                                    
+                                }
+                            }
+                            else
+                            {
+                            $results = "**Unable to get links on site**";
+                            $linkValue = $site;                        
+                            }
+                        }
+                        else
+                        {
+                            $results = "**Site has already been entered**";
+                            $linkValue = $site;                        
+                        }
+                    }                    
+                    else
+                    {
+                        $results = "**URL is not valid**";
+                        $linkValue = $site;                        
+                    }
+            }
+
             
-               ?>
-                <h2>Results found: <?php echo count($removeDuplicates); ?></h2>
-                <table class="table">
-                        <?php foreach ($results2 as $row): ?><tr>
-                        <td><?php echo $row['site_id']; ?></td>
-                        <td><?php echo $row['link']; ?></td>
-                        </tr><?php endforeach; ?>
-                    </table>
-                    
-            <?php }}
+
         ?>
+
+<br/>
+<br/>
+
+<!-- Header-->
+    <center>
+<div class="head">
+    <h1>Web site lookup</h1>
+</div>
         
+<!--Enter web site-->
+<div class="web">
+        <form method="post" action="#">            
+            Enter Web site URL:
+</div>      <br/>
+            <input type="text" value="<?php echo $linkValue ?>" name="site" />
+            <br /><br/>
+            <input type="submit"  value="Submit" class="btn btn-default" />&nbsp;<input type="button" value="View" class="btn btn-default" onClick="location.href='search.php'"/>
+            <br>
+        </form>
+
         
-        <br />
-        <button class="btn btn-default" onclick="window.location.href='URL.php'">View All</button>
-        </center>
-        
+ <!-- pushes out error message-->       
+         <br/>   
+        <?php include './includes/results.html.php'; ?>
+            <table>
+            
+            <tbody>
+            <?php foreach ($linksOnSite as $row): ?>
+                <tr>
+                    <td><?php echo $row; ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </center>      
+            
+            
     </body>
 </html>

@@ -100,7 +100,7 @@ function getUserAddressesSortedForOneGroup($userid, $groupid, $sortBy)
 
 function searchDatabase($userID, $column, $userSearch)
 {
-    //searches the database based on what the user selected in the form
+//searches the database based on what the user selected in the form
     $db = dbconnect();
 
     $stmt = $db->prepare("SELECT * FROM address WHERE user_id = :userID AND $column LIKE CONCAT(:search, '%')");

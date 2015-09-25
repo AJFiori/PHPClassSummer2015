@@ -6,8 +6,9 @@
         
         <title>Address Book Manager</title>
 <!-- Bootstrap/CSS -->
-        <link rel="stylesheet" href="css/style3.css">
+        
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style3.css">
 
     </head>
     <body>

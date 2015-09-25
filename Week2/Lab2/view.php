@@ -2,16 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="Style3.css">
+        <link rel="stylesheet" type="text/css" href="css/style3.css">
+        <link rel ="stylesheet" type="text/css" href="css/bootstrap.min.css">
         
         <title>Actor Database</title>
     </head>
     <body>
+        
  <!-- Connects to the database and inputs info -->
       <?php
         include './dbconnect.php';
         include './functions.php';
-        $results = '';
+        $results = "";
         if (isPostRequest()) {
             $db = getDatabase();
             $stmt = $db->prepare("INSERT INTO actors SET firstName = :firstName, lastName = :lastName,dob = :dob, height = :height");
@@ -37,10 +39,17 @@
       
     
 <!--Header text and form outline -->
+
 <center>
+    
     <div id=wrapper>
+        <div class="head">
             <h1>Actor Database</h1>
     </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
             <form method="post" action="#">
                 First Name:  <input type="text" value="" name="firstName" autofocus="autofocus"/>
                 <br/>
@@ -54,14 +63,13 @@
                Height:  <input type="text" value="" name="height" />
                 <br/>
                 <br/>
-                <input type="submit"  value="Submit"/>
-                <input type="button"  value="View Data" onClick="location.href='Data.php'"/>                          
-               <!-- <input type="button" value="Search"/> -->
-                 
+        <input type="submit"  value="Submit" class="btn btn-default"/>
+        <input type="button"  value="View Data" class="btn btn-default" onClick="location.href='Data.php'"/>  
             </form>
-                    <br />
-                    
-
+    <br/>
+    
+<!-- displays error and disappears-->
+            <?php include './includes/results.html.php';?>
 </center>
                 
 </body>

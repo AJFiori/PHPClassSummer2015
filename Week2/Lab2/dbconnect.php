@@ -1,5 +1,5 @@
 <?php
-/*To establish the connection to the database */  
+// Connects to the database  
 function getDatabase() {
     $config = array(
         'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=phpclasssummer2015',
@@ -11,7 +11,7 @@ function getDatabase() {
         $db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD']);
         $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     } catch (Exception $ex) {
-        /*by setting it to null it will close the connection */
+// by setting it to null it will close the connection 
         $db = null;
     }
     return $db;

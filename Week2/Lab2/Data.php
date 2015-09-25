@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style3.css">
+        <link rel="stylesheet" type="text/css" href="css/style3.css">
+        <link rel ="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <title>Actor Database</title>
     </head>
     <body>
@@ -20,13 +21,20 @@
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         ?>
-        
-<!--Creates the table-->
+<!-- Header-->
     <center>
-    <div id='table'>
+        <div class="head">
+            <h2>View All Actors</h2>
+        </div>
+    </center>
+<!--Creates the table-->
+<br/>
+<br/>
+<br/>
+    <center>
+    <div id="table">
         
-    
-        <table>
+        <table class="table table-hover" style="width: 500px">
             <thead>
                 <tr>
                     <th>ID &nbsp; &nbsp;</th> 
@@ -41,7 +49,7 @@
             <?php
                      
             ?>
-            
+<!-- Displays data-->      
             <?php foreach ($results as $row): ?>
                 <tr>
                     <td><?php echo $row['ID']; ?></td>
@@ -54,7 +62,9 @@
             <?php endforeach; ?>
         </table>
         <br />
-         <input type="button" value="Back" onClick="location.href='view.php'"/>
+        <br/>
+        <br/>
+         <input type="button" value="Back" class="btn btn-default" onClick="location.href='view.php'"/>
         
     </div>
     </center>
